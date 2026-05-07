@@ -1,0 +1,38 @@
+﻿@model CustomerFeedbackPortal.Models.Feedback
+@addTagHelper *, CustomerFeedbackPortal
+@using CustomerFeedbackPortal.Helpers
+<h2>Customer Feedback Form</h2>
+
+<form asp-action="Index" method="post">
+    
+    <div style="margin-bottom: 10px;">
+        <label>Name:</label><br />
+        @Html.StyledInput("Name", "Please enter your full name...")
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Email:</label><br />
+        @Html.TextBoxFor(m => m.Email)
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Rating (1 to 5):</label><br />
+        @Html.DropDownListFor(m => m.Rating, new SelectList(new[] { 1, 2, 3, 4, 5 }))
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Comments:</label><br />
+        @Html.TextAreaFor(m => m.Comments)
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Visual Rating:</label>
+        <star-rating rating="4"></star-rating>
+    </div>
+
+    <button type="submit">Submit Feedback</button>
+
+</form>
+
+<br />
+<a asp-action="Index">Clear form and start over</a>
